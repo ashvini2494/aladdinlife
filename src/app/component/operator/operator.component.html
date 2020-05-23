@@ -1,0 +1,100 @@
+<p>operator works!</p>
+
+<div>
+    <button class="btn btn-success" id="add" (click)="addnewoperator()">Add</button>
+</div>
+
+<div>
+    <input
+    type="text"
+    style="padding:8px;margin:15px auto;width:30%;"
+    placeholder="Type to filter the name column..."
+    (keyup)="updateFilter($event)"
+  />
+  <ngx-datatable
+    #table
+    class="material striped"
+    [rows]="rows"
+    [columns]="columns"
+    [columnMode]="'force'"
+    [headerHeight]="50"
+    [footerHeight]="50"
+    [rowHeight]="'auto'"
+    [limit]="10">
+
+
+    <ngx-datatable-column name="id"> 
+      <ng-template let-column="column" ngx-datatable-header-template> 
+        <span>id</span>
+      </ng-template> 
+    </ngx-datatable-column>
+
+        <ngx-datatable-column name="operatorName"> 
+          <ng-template let-column="column" ngx-datatable-header-template> 
+            <span>OperatorName</span>
+          </ng-template> 
+        </ngx-datatable-column>
+
+        <ngx-datatable-column name="supportRetail"> 
+            <ng-template let-column="column" ngx-datatable-header-template> 
+              <span>Supportretail</span>
+            </ng-template> 
+          </ngx-datatable-column>
+          
+          <ngx-datatable-column name="supportOnline"> 
+              <ng-template let-column="column" ngx-datatable-header-template> 
+                <span>Supportonline</span>
+              </ng-template> 
+            </ngx-datatable-column>
+
+            <ngx-datatable-column name="Active"> 
+              <!-- <span>Active</span> -->
+              <ng-template let-row="row" ngx-datatable-cell-template>  
+                  <i class="mdi  mdi-checkbox-marked-circle-outline" style="font-size: 20px;" [ngStyle]="{'color' : isActive === true ? 'red' : 'green'}"></i>
+              </ng-template> 
+            </ngx-datatable-column>
+
+            <ngx-datatable-column name="Edit" prop="id"> 
+                <ng-template let-row="row" let-value="value" ngx-datatable-cell-template> 
+
+                  <i class="mdi mdi-pencil" style="font-size: 20px;" (click)= "editproduct(row.id)" ></i>
+        
+                </ng-template> 
+              </ngx-datatable-column> 
+            
+            <!-- <ngx-datatable-column name="Delete" prop="id">  
+              <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+                <i class="mdi mdi-delete" (click)="deleteproduct(row.id)" ></i>
+              </ng-template>
+              </ngx-datatable-column> -->
+
+
+              
+            
+
+  </ngx-datatable>
+</div> 
+
+<!-- <ngx-datatable #table class="bootstrap" [rows]="rows" [columnMode]="'force'" [headerHeight]="50" [footerHeight]="50"
+  [rowHeight]="50"  [scrollbarV]="true" [sorts]="[{prop: 'name', dir: 'desc'}]">
+
+  <ngx-datatable-column name="Company">
+    <ng-template let-row="row" ngx-datatable-cell-template>
+      {{row.company}}
+    </ng-template>
+  </ngx-datatable-column>
+
+  <ngx-datatable-column name="Name">
+    <ng-template let-row="row" ngx-datatable-cell-template>
+      {{row.name}}
+    </ng-template>
+  </ngx-datatable-column>
+
+  <ngx-datatable-column name="Gender">
+  </ngx-datatable-column>
+
+</ngx-datatable> -->
+
+
+
+

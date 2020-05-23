@@ -1,0 +1,243 @@
+<p>editplansmodule works!</p><br>
+<br>
+<br>
+    <div class="container">
+      <h2></h2>
+      <div class="panel panel-default">
+        <div class="panel-heading"></div>
+        <div class="panel-body" id ="addform">
+          <form [formGroup]="plansmoduleform"  class="form-horizontal" (ngSubmit)="onSubmit(plansmoduleform.value)" enctype="multipart/form-data" >
+            
+
+            <div class="form-group">
+                <div class="row">
+                    <label class="control-label col-sm-2" for="title">PlanId:</label>
+                    <div class="col-sm-10">
+                    <input type="text" class="form-control" [(ngModel)]="planId" formControlName="planId">
+                  </div>
+                  </div>
+            </div>
+
+            <div class="form-group">
+                <div class="row">
+                    <label class="control-label col-sm-2" for="title">PlanName:</label>
+                    <div class="col-sm-10">
+                    <input type="text" class="form-control"  [(ngModel)]="planName"  formControlName="planName">
+                  </div>
+                  </div>
+            </div>
+
+            <div class="form-group">
+                <div class="row">
+                    <label class="control-label col-sm-2" for="title">PlanLongName:</label>
+                    <div class="col-sm-10">
+                    <input type="text" class="form-control" [(ngModel)]="planLongName"  formControlName="planLongName">
+                  </div>
+                  </div>
+            </div>
+
+            <div class="form-group">
+                <div class="row">
+                    <label class="control-label col-sm-2" for="title">PlanStartDate:</label>
+                    <div class="col-sm-10">
+                    <input type="date" class="form-control" [(ngModel)]="planStartDate"  formControlName="planStartDate">
+                  </div>
+                  </div>
+            </div>
+
+            <div class="form-group">
+                <div class="row">
+                    <label class="control-label col-sm-2" for="title">PlanEndDate:</label>
+                    <div class="col-sm-10">
+                    <input type="date" class="form-control" [(ngModel)]="planEndDate"  formControlName="planEndDate">
+                  </div>
+                  </div>
+            </div>
+
+            <div class="form-group">
+                <div class="row">
+                    <label class="control-label col-sm-2" for="title">PlanUrl:</label>
+                    <div class="col-sm-10">
+                    <input type="text" class="form-control" [(ngModel)]="planUrl"  formControlName="planUrl">
+                  </div>
+                  </div>
+            </div>
+
+            <div class="form-group">
+                <div class="row">
+                  <label class="control-label col-sm-2" >PlanType :</label>
+                  <div class="col-sm-10">
+                   <select formControlName="planType" class="form-control"  id="dropdown">
+                      <option value="">Select plan</option>
+                       <option *ngFor="let option of planTypeAll" [value]="option.id" [selected]="data?.planType == option.id">{{option.planType}}</option>
+                   </select>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <div class="row">
+                  <label class="control-label col-sm-2">Operator :</label>
+                  <div class="col-sm-10">
+                   <select formControlName="operatorId" class="form-control"  id="dropdown">
+                       <option value="">Select operator</option>
+                       <option *ngFor="let option of operatorAll" [value]="option.id" [selected]="data?.operatorId == option.id">{{option.operatorName}}</option>
+                   </select>
+                  </div>
+                </div>
+              </div>
+
+            <div class="form-group">
+                <div class="row">
+                    <label class="control-label col-sm-2" for="title">PlanValidity:</label>
+                    <div class="col-sm-10">
+                    <input type="number" class="form-control" [(ngModel)]="planValidity"  min="1" max="5"  formControlName="planValidity">
+                  </div>
+                  </div>
+            </div>
+            
+            <div class="form-group">
+                <div class="row">
+                    <label class="control-label col-sm-2" for="title">PlanValidityUnit:</label>
+                    <div class="col-sm-10">
+                    <input type="text" class="form-control" [(ngModel)]="planValidity"   formControlName="planValidityUnit">
+                  </div>
+                  </div>
+            </div>
+
+            <div class="form-group">
+                <div class="row">
+                    <label class="control-label col-sm-2" for="title">ContractPeriod:</label>
+                    <div class="col-sm-10">
+                    <input type="number" class="form-control"  [(ngModel)]="contractPeriod" min="1"  formControlName="contractPeriod">
+                  </div>
+                  </div>
+            </div>
+
+            <div class="form-group">
+                <div class="row">
+                    <label class="control-label col-sm-2" for="title">ContractPeriodUnit:</label>
+                    <div class="col-sm-10">
+                    <input type="text" class="form-control" [(ngModel)]="contractPeriodUnit"   formControlName="contractPeriodUnit">
+                  </div>
+                  </div>
+            </div>
+
+            <div class="form-group">
+                <div class="row">
+                  <label class="control-label col-sm-2">Autorenewed :</label>
+                  <div class="col-sm-10">
+                   <select formControlName="autorenewedFlag" class="form-control"  id="dropdown">
+                       <option value="">Select autorenewed</option>
+                       <option *ngFor="let option of autorenewedFlagAll" [value]="option.id" [selected]="data?.autorenewedFlag == option.id">{{option.name}}</option>
+                   </select>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <div class="row">
+                  <label class="control-label col-sm-2" for="active">Discount:</label>
+                  <div class="col-sm-10">
+                  <input type="radio" value="true" formControlName="discountedUpfrontPayment" [checked]="data?.discountedUpfrontPayment == true"> Yes
+                  <input type="radio" value="false" formControlName="discountedUpfrontPayment" [checked]="data?.discountedUpfrontPayment == false"> No
+                  </div>
+                </div>
+              </div>
+             
+              <div class="form-group">
+                <div class="row">
+                    <label class="control-label col-sm-2" for="title"> PlanVatPer:</label>
+                    <div class="col-sm-10">
+                    <input type="number" class="form-control" [(ngModel)]="planVatPer" min="1"  formControlName="planVatPer">
+                  </div>
+                  </div>
+            </div>
+
+            <div class="form-group">
+                <div class="row">
+                  <label class="control-label col-sm-2" for="active">Topupsallowed:</label>
+                  <div class="col-sm-10">
+                  <input type="radio" value="true" formControlName="topupsallowedFlag" [checked]="data?.topupsallowedFlag == true"> Yes
+                  <input type="radio" value="false" formControlName="topupsallowedFlag" [checked]="data?.topupsallowedFlag == false"> No
+                  </div>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <div class="row">
+                    <label class="control-label col-sm-2" for="title"> Number Of MultiSims:</label>
+                    <div class="col-sm-10">
+                    <input type="number" class="form-control" [(ngModel)]="numberOfMultiSims" min="1"  formControlName="numberOfMultiSims">
+                  </div>
+                  </div>
+            </div>
+
+            <div class="form-group">
+                <div class="row">
+                    <label class="control-label col-sm-2" for="title"> Recharge Frequency:</label>
+                    <div class="col-sm-10">
+                    <input type="number" class="form-control" [(ngModel)]="rechargeFrequency" min="1"  formControlName="rechargeFrequency">
+                  </div>
+                  </div>
+            </div>
+            
+            <div class="form-group">
+                <div class="row">
+                    <label class="control-label col-sm-2" for="title"> Recharge Frequency unit:</label>
+                    <div class="col-sm-10">
+                    <input type="text" class="form-control" [(ngModel)]="rechargeFrequencyUnit" formControlName="rechargeFrequencyUnit">
+                  </div>
+                  </div>
+            </div>
+
+            <div class="form-group">
+                <div class="row">
+                  <label class="control-label col-sm-2" for="active">Active:</label>
+                  <div class="col-sm-10">
+                  <input type="radio" value="true" formControlName="active" [checked]="data?.active == true"> Yes
+                  <input type="radio" value="false" formControlName="active" [checked]="data?.active == false"> No
+                  </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="row">
+                  <label class="control-label col-sm-2" for="active">Addons:</label>
+                  <div class="col-sm-10">
+                  <input type="radio" value="true" formControlName="addon" [checked]="data?.addon == true"> Yes
+                  <input type="radio" value="false" formControlName="addon" [checked]="data?.addon == false"> No
+                  </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="row">
+                  <label class="control-label col-sm-2" for="active">TaxIncluded:</label>
+                  <div class="col-sm-10">
+                  <input type="radio" value="true" formControlName="taxIncluded" [checked]="data?.taxIncluded == true"> Yes
+                  <input type="radio" value="false" formControlName="taxIncluded" [checked]="data?.taxIncluded == false"> No
+                  </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="row">
+                  <label class="control-label col-sm-2" for="active">Data Only:</label>
+                  <div class="col-sm-10">
+                  <input type="radio" value="true" formControlName="dataOnly" [checked]="data?.dataOnly == true"> Yes
+                  <input type="radio" value="false" formControlName="dataOnly" [checked]="data?.dataOnly == false"> No
+                  </div>
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-success" id="submit">Submit</button>
+          </form>
+
+        </div>
+      </div>
+    </div>
+
+
+
+

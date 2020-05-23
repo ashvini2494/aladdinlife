@@ -1,0 +1,284 @@
+<!-- <p>addplansmodule works!</p> -->
+
+
+<br>
+<br>
+<br>
+    <div class="container">
+      <h2></h2>
+      <div class="panel panel-default">
+        <div class="panel-heading"></div>
+        <div class="panel-body" id ="addform">
+          <form [formGroup]="plansmoduleform"  class="form-horizontal" (ngSubmit)="onSubmit(plansmoduleform.value)" enctype="multipart/form-data" >
+            
+
+            <div class="form-group">
+                <div class="row">
+                    <label class="control-label col-sm-2" for="title">PlanId:</label>
+                    <div class="col-sm-10">
+                    <input type="text" class="form-control" placeholder="Enter Id"  formControlName="planId">
+                  </div>
+                  </div>
+            </div>
+
+            <div class="form-group">
+                <div class="row">
+                    <label class="control-label col-sm-2" for="title">PlanName:</label>
+                    <div class="col-sm-10">
+                    <input type="text" class="form-control" placeholder="Enter Planname"  formControlName="planName">
+                  </div>
+                  </div>
+            </div>
+
+            <div class="form-group">
+                <div class="row">
+                    <label class="control-label col-sm-2" for="title">PlanLongName:</label>
+                    <div class="col-sm-10">
+                    <input type="text" class="form-control" placeholder="Enter PlanLongName"  formControlName="planLongName">
+                  </div>
+                  </div>
+            </div>
+
+            <div class="form-group">
+                <div class="row">
+                    <label class="control-label col-sm-2" for="title">PlanStartDate:</label>
+                    <div class="col-sm-10">
+                    <input type="date" class="form-control" placeholder="Enter planStartDate"  formControlName="planStartDate">
+                  </div>
+                  </div>
+            </div>
+
+            <div class="form-group">
+                <div class="row">
+                    <label class="control-label col-sm-2" for="title">PlanEndDate:</label>
+                    <div class="col-sm-10">
+                    <input type="date" class="form-control" placeholder="Enter PlanEndDate"  formControlName="planEndDate">
+                  </div>
+                  </div>
+            </div>
+
+            <div class="form-group">
+                <div class="row">
+                    <label class="control-label col-sm-2" for="title">PlanUrl:</label>
+                    <div class="col-sm-10">
+                    <input type="text" class="form-control" placeholder="Enter planUrl"  formControlName="planUrl">
+                  </div>
+                  </div>
+            </div>
+
+            <div class="form-group">
+                <div class="row">
+                  <label class="control-label col-sm-2" >PlanType :</label>
+                  <div class="col-sm-10">
+                   <select formControlName="planType" class="form-control"  id="dropdown">
+                      <option value="">Select plan</option>
+                       <option *ngFor="let option of planTypeAll" [value]="option.id">{{option.planType}}</option>
+                   </select>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <div class="row">
+                  <label class="control-label col-sm-2">Operator :</label>
+                  <div class="col-sm-10">
+                   <select formControlName="operatorId" class="form-control"  id="dropdown">
+                       <option value="">Select operator</option>
+                       <option *ngFor="let option of operatorAll" [value]="option.id">{{option.operatorName}}</option>
+                   </select>
+                  </div>
+                </div>
+              </div>
+
+            <div class="form-group">
+                <div class="row">
+                    <label class="control-label col-sm-2" for="title">PlanValidity:</label>
+                    <div class="col-sm-10">
+                    <input type="number" class="form-control" placeholder="Enter PlanValidity"   min="1" max="5"  formControlName="planValidity">
+                  </div>
+                  </div>
+            </div>
+            
+            <div class="form-group">
+                <div class="row">
+                    <label class="control-label col-sm-2" for="title">PlanValidityUnit:</label>
+                    <div class="col-sm-10">
+                    <input type="text" class="form-control" placeholder="Enter planValidityUnit"   formControlName="planValidityUnit">
+                  </div>
+                  </div>
+            </div>
+
+            <div class="form-group">
+                <div class="row">
+                    <label class="control-label col-sm-2" for="title">ContractPeriod:</label>
+                    <div class="col-sm-10">
+                    <input type="number" class="form-control" placeholder="Enter ContractPeriod" min="1"  formControlName="contractPeriod">
+                  </div>
+                  </div>
+            </div>
+
+            <div class="form-group">
+                <div class="row">
+                    <label class="control-label col-sm-2" for="title">ContractPeriodUnit:</label>
+                    <div class="col-sm-10">
+                    <input type="text" class="form-control" placeholder="Enter ContractPeriodUnit"   formControlName="contractPeriodUnit">
+                  </div>
+                  </div>
+            </div>
+
+            <div class="form-group">
+                <div class="row">
+                  <label class="control-label col-sm-2">Autorenewed :</label>
+                  <div class="col-sm-10">
+                   <select formControlName="autorenewedFlag" class="form-control"  id="dropdown">
+                       <option value="">Select autorenewed</option>
+                       <option *ngFor="let option of autorenewedFlagAll" [value]="option.id">{{option.name}}</option>
+                   </select>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <div class="row">
+                  <label class="control-label col-sm-2" for="active">Discount:</label>
+                  <div class="col-sm-10">
+                  <input type="radio" value="true" formControlName="discountedUpfrontPayment"> Yes
+                  <input type="radio" value="false" formControlName="discountedUpfrontPayment"> No
+                  </div>
+                </div>
+              </div>
+             
+              <div class="form-group">
+                <div class="row">
+                    <label class="control-label col-sm-2" for="title"> PlanVatPer:</label>
+                    <div class="col-sm-10">
+                    <input type="number" class="form-control" placeholder="Enter PlanVatPer" min="1"  formControlName="planVatPer">
+                  </div>
+                  </div>
+            </div>
+
+            <div class="form-group">
+                <div class="row">
+                  <label class="control-label col-sm-2" for="active">Topupsallowed:</label>
+                  <div class="col-sm-10">
+                  <input type="radio" value="true" formControlName="topupsallowedFlag"> Yes
+                  <input type="radio" value="false" formControlName="topupsallowedFlag"> No
+                  </div>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <div class="row">
+                    <label class="control-label col-sm-2" for="title"> Number Of MultiSims:</label>
+                    <div class="col-sm-10">
+                    <input type="number" class="form-control" placeholder="Enter number" min="1"  formControlName="numberOfMultiSims">
+                  </div>
+                  </div>
+            </div>
+
+            <div class="form-group">
+                <div class="row">
+                    <label class="control-label col-sm-2" for="title"> Recharge Frequency:</label>
+                    <div class="col-sm-10">
+                    <input type="number" class="form-control" placeholder="Enter Frequency" min="1"  formControlName="rechargeFrequency">
+                  </div>
+                  </div>
+            </div>
+            
+            <div class="form-group">
+                <div class="row">
+                    <label class="control-label col-sm-2" for="title"> Recharge Frequency unit:</label>
+                    <div class="col-sm-10">
+                    <input type="text" class="form-control" placeholder="Enter Frequency"  formControlName="rechargeFrequencyUnit">
+                  </div>
+                  </div>
+            </div>
+
+            <div class="form-group">
+                <div class="row">
+                  <label class="control-label col-sm-2" for="active">Active:</label>
+                  <div class="col-sm-10">
+                  <input type="radio" value="true" formControlName="active"> Yes
+                  <input type="radio" value="false" formControlName="active"> No
+                  </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="row">
+                  <label class="control-label col-sm-2" for="active">Addons:</label>
+                  <div class="col-sm-10">
+                  <input type="radio" value="true" formControlName="addon"> Yes
+                  <input type="radio" value="false" formControlName="addon"> No
+                  </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="row">
+                  <label class="control-label col-sm-2" for="active">TaxIncluded:</label>
+                  <div class="col-sm-10">
+                  <input type="radio" value="true" formControlName="taxIncluded"> Yes
+                  <input type="radio" value="false" formControlName="taxIncluded"> No
+                  </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="row">
+                  <label class="control-label col-sm-2" for="active">Data Only:</label>
+                  <div class="col-sm-10">
+                  <input type="radio" value="true" formControlName="dataOnly"> Yes
+                  <input type="radio" value="false" formControlName="dataOnly"> No
+                  </div>
+                </div>
+            </div>
+
+
+            
+            
+            
+             
+
+           
+
+            <!-- <div class="form-group">
+              <div class="row">
+                  <label class="control-label col-sm-2" for="title">PlanType:</label>
+                  <div class="col-sm-10">
+                  <input type="text" class="form-control" placeholder="Enter plantype"  formControlName="planType">
+                </div>
+                </div>
+              </div>
+            
+            <div class="form-group">
+                <div class="row">
+              <label class="control-label col-sm-2" for="plan_label">PlanLabel :</label>
+              <div class="col-sm-10">
+              <input type="text" class="form-control"   formControlName="planLabel" placeholder="Enter planlabel" >
+            </div>
+            </div>
+            </div> -->
+
+            <!-- <div class="form-group">
+              <div class="row">
+                <label class="control-label col-sm-2" for="country">Country:</label>
+                <div class="col-sm-10">
+                 <select formControlName="country" class="form-control"  id="countrydropdown">
+                     <option value="">Select country</option>
+                     <option *ngFor="let option of country" [value]="option.id">{{option.name}}</option>
+                 </select>
+                </div>
+              </div>
+            </div> -->
+
+            
+
+            <button type="submit" class="btn btn-success" id="submit">Submit</button>
+          </form>
+
+        </div>
+      </div>
+    </div>
+
+

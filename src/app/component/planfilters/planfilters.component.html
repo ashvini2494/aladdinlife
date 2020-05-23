@@ -1,0 +1,154 @@
+<p>planfilters works!</p>
+
+<div>
+    <button class="btn btn-success" id="add" (click)="addplanfilters()">Add</button>
+</div>
+
+<div>
+    <input
+    type="text"
+    style="padding:8px;margin:15px auto;width:30%;"
+    placeholder="Type to filter the name column..."
+    (keyup)="updateFilter($event)"
+  />
+  <ngx-datatable
+    #table
+    class="material striped"
+    [rows]="rows"
+    [columns]="columns"
+    [columnMode]="'force'"
+    [headerHeight]="50"
+    [footerHeight]="50"
+    [rowHeight]="'auto'"
+    [limit]="10"
+    [scrollbarH]="true">
+
+
+    <ngx-datatable-column name="id"> 
+      <ng-template let-column="column" ngx-datatable-header-template> 
+        <span>id</span>
+      </ng-template> 
+    </ngx-datatable-column>
+
+        <ngx-datatable-column name="keyMajor"> 
+          <ng-template let-column="column" ngx-datatable-header-template> 
+            <span>KeyMajor</span>
+          </ng-template> 
+        </ngx-datatable-column>
+
+        <ngx-datatable-column name="keyName"> 
+            <ng-template let-column="column" ngx-datatable-header-template> 
+              <span>KeyName</span>
+            </ng-template> 
+          </ngx-datatable-column>
+         
+          <ngx-datatable-column name="keyNameLabel"> 
+            <ng-template let-column="column" ngx-datatable-header-template> 
+              <span>KeyNameLabel</span>
+            </ng-template> 
+          </ngx-datatable-column>
+
+          <ngx-datatable-column name="iconsClass"> 
+            <ng-template let-column="column" ngx-datatable-header-template> 
+              <span>IconsClass</span>
+            </ng-template> 
+          </ngx-datatable-column>
+
+          <ngx-datatable-column name="keyValueMin"> 
+            <ng-template let-column="column" ngx-datatable-header-template> 
+              <span>KeyValueMin</span>
+            </ng-template> 
+          </ngx-datatable-column>
+
+          <ngx-datatable-column name="keyValueMax"> 
+            <ng-template let-column="column" ngx-datatable-header-template> 
+              <span>KeyValueMax</span>
+            </ng-template> 
+          </ngx-datatable-column>
+
+          <ngx-datatable-column name="keyUnitsMin"> 
+            <ng-template let-column="column" ngx-datatable-header-template> 
+              <span>KeyUnitsMin</span>
+            </ng-template> 
+          </ngx-datatable-column>
+
+          <ngx-datatable-column name="keyUnitsMax"> 
+            <ng-template let-column="column" ngx-datatable-header-template> 
+              <span>KeyUnitsMax</span>
+            </ng-template> 
+          </ngx-datatable-column>
+
+          <ngx-datatable-column name="returnType"> 
+            <ng-template let-column="column" ngx-datatable-header-template> 
+              <span>ReturnType</span>
+            </ng-template> 
+          </ngx-datatable-column>
+
+          <ngx-datatable-column name="label"> 
+            <ng-template let-column="column" ngx-datatable-header-template> 
+              <span>Label</span>
+            </ng-template> 
+          </ngx-datatable-column>
+
+          <ngx-datatable-column name="country"> 
+            <ng-template let-column="column" ngx-datatable-header-template> 
+              <span>Country</span>
+            </ng-template> 
+          </ngx-datatable-column>
+
+          <ngx-datatable-column name="language"> 
+            <ng-template let-column="column" ngx-datatable-header-template> 
+              <span>Language</span>
+            </ng-template> 
+          </ngx-datatable-column>
+
+          <ngx-datatable-column name="orderno"> 
+            <ng-template let-column="column" ngx-datatable-header-template> 
+              <span>Order</span>
+            </ng-template> 
+          </ngx-datatable-column>
+
+          <ngx-datatable-column name="planType"> 
+            <ng-template let-column="column" ngx-datatable-header-template> 
+              <span>PlanType</span>
+            </ng-template> 
+          </ngx-datatable-column>
+
+          <ngx-datatable-column name="addon"> 
+            <ng-template let-column="column" ngx-datatable-header-template> 
+              <span>Addon</span>
+            </ng-template> 
+          </ngx-datatable-column>
+
+          <ngx-datatable-column name="addon"> 
+            <ng-template let-column="column" ngx-datatable-header-template> 
+              <span>Addon</span>
+            </ng-template> 
+          </ngx-datatable-column>
+
+          <ngx-datatable-column name="Active"> 
+            <!-- <span>Active</span> -->
+            <ng-template let-row="row" ngx-datatable-cell-template>  
+                <i class="mdi  mdi-checkbox-marked-circle-outline" style="font-size: 20px;" [ngStyle]="{'color' : active === true ? 'red' : 'green'}"></i>
+            </ng-template> 
+          </ngx-datatable-column>
+          
+            <ngx-datatable-column name="Edit" prop="id"> 
+                <ng-template let-row="row" let-value="value" ngx-datatable-cell-template> 
+                  <i class="mdi mdi-pencil" style="font-size: 20px;"  (click)= "editfilters(row.id)" ></i>
+                </ng-template> 
+              </ngx-datatable-column> 
+            
+            <!-- <ngx-datatable-column name="Delete" prop="id">  
+              <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+                <i class="mdi mdi-delete" (click)="deleteproduct(row.id)" ></i>
+              </ng-template>
+              </ngx-datatable-column> -->
+
+
+              
+            
+
+  </ngx-datatable>
+</div> 
+

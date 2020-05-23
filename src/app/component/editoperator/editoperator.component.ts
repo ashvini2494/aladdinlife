@@ -18,7 +18,8 @@ export class EditoperatorComponent implements OnInit {
 
   constructor(private myservice : MyserviceService, 
              private activatedroute : ActivatedRoute, 
-             private fb : FormBuilder ) { }
+             private fb : FormBuilder,
+             private router : Router ) { }
 
   ngOnInit(): void {
     this.main();
@@ -66,6 +67,7 @@ export class EditoperatorComponent implements OnInit {
     this.myservice.updateOperator(value).subscribe(response=>{
       console.log(response);
       alert("upadted");
+      this.router.navigate(['/component/operator']);
     },
     error => {  
       alert(error);  

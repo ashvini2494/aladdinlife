@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder , Validators, FormGroup, FormArray } from '@angular/forms';
 import { MyserviceService } from 'src/app/myservice.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-addplansmodule',
@@ -14,7 +15,7 @@ export class AddplansmoduleComponent implements OnInit {
   planTypeAll : any;
   operatorAll : any;
 
-  constructor(public fb : FormBuilder, public myservice : MyserviceService) { }
+  constructor(public fb : FormBuilder, public myservice : MyserviceService, public router : Router) { }
 
   
 
@@ -62,7 +63,8 @@ export class AddplansmoduleComponent implements OnInit {
     console.log(value);
     this.myservice.addplansModule(this.plansmoduleform.value).subscribe(data=>{
       console.log('data'+data);
-      alert("added successfully!")
+      alert("added successfully!");
+      this.router.navigate(['/component/plansmodule']);
       },
       error => {  
         alert(error);   

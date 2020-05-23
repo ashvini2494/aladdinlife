@@ -10,8 +10,9 @@ import { MyserviceService } from 'src/app/myservice.service';
 export class PlanfiltersComponent implements OnInit {
 
 
-  mydata = [];
+  mydata : any;
   rows : any;
+  plantype : any;
   columns = [
     { prop:'id'},
     { prop: 'KeyMajor' },
@@ -46,7 +47,14 @@ export class PlanfiltersComponent implements OnInit {
     this.myservice.getplanFilters().subscribe(response=>{
       console.log("main");
       console.log(response);
-     this.rows = response;
+      this.mydata = response;
+      this.mydata.forEach(element => {
+        this.myservice.editPlan(element.planType).subscribe(planresponse=>{
+          this.plantype = planresponse['planType'];
+          element.planType = this.plantype;
+          });
+      });
+     this.rows = this.mydata;
     })
   }
 

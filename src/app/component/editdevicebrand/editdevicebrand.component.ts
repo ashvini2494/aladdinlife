@@ -19,7 +19,8 @@ export class EditdevicebrandComponent implements OnInit {
 
   constructor(private myservice      : MyserviceService, 
               private activatedroute : ActivatedRoute, 
-              private fb             : FormBuilder) { }
+              private fb             : FormBuilder,
+              private router         : Router) { }
 
   ngOnInit(): void {
     this.main();
@@ -57,6 +58,7 @@ export class EditdevicebrandComponent implements OnInit {
     this.myservice.updatedeviceBrand(value).subscribe(response=>{
       console.log(response);
       alert("upadted");
+      this.router.navigate(['/component/devicebrand']);
     },
     error => {  
       alert(error);  

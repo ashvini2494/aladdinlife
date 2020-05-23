@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder , Validators, FormGroup, FormArray } from '@angular/forms';
 import { MyserviceService } from 'src/app/myservice.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-editdevicecolor',
@@ -17,7 +17,10 @@ export class EditdevicecolorComponent implements OnInit {
   public deviceColorHex : any;
   public isActive : any;
 
-  constructor(public fb: FormBuilder,public myservice : MyserviceService, private activatedroute : ActivatedRoute) { }
+  constructor(public fb: FormBuilder,
+              public myservice : MyserviceService, 
+              private activatedroute : ActivatedRoute,
+              private router : Router) { }
 
   ngOnInit(): void {
     this.main();
@@ -59,7 +62,8 @@ export class EditdevicecolorComponent implements OnInit {
        this.colorform.value.id = this.colorformid;
        this.myservice.updatedeviceColor(this.colorform.value).subscribe(data=>{
        console.log('data'+data);
-       alert("updated successfully!")
+       alert("updated successfully!");
+       this.router.navigate(['/component/devicecolor']);
        },
        error => {  
          alert(error);   

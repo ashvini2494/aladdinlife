@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder , Validators, FormGroup, FormArray } from '@angular/forms';
 import { MyserviceService } from 'src/app/myservice.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-editplan',
@@ -18,7 +18,10 @@ export class EditplanComponent implements OnInit {
   country = [{id : 1, name : 'India'},{id : 2, name : 'Bangladesh' },{id : 3, name: 'SriLanka'},{id : 4, name: 'Nepal'},]
 
 
-  constructor(public fb : FormBuilder, public myservice : MyserviceService, private activatedroute : ActivatedRoute) { }
+  constructor(public fb : FormBuilder, 
+              public myservice : MyserviceService, 
+              private activatedroute : ActivatedRoute,
+              private router : Router) { }
 
   ngOnInit(): void {
     this.planform = this.fb.group({
@@ -50,6 +53,7 @@ export class EditplanComponent implements OnInit {
     value.id = this.planid;
     this.myservice.updatePlan(value).subscribe(response=>{
       alert("updated");
+      this.router.navigate(['/component/plan']);
     },
     error=>{
       alert(error);

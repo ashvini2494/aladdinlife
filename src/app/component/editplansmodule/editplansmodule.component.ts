@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder , Validators, FormGroup, FormArray } from '@angular/forms';
 import { MyserviceService } from 'src/app/myservice.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-editplansmodule',
@@ -40,7 +40,10 @@ export class EditplansmoduleComponent implements OnInit {
   dataOnly : any;
   plansmoduleid : any;
 
-  constructor(public fb : FormBuilder, public myservice : MyserviceService, private activatedroute : ActivatedRoute) { }
+  constructor(public fb : FormBuilder, 
+              public myservice : MyserviceService, 
+              private activatedroute : ActivatedRoute,
+              public router : Router) { }
 
   ngOnInit(): void {
     this.plansmoduleform = this.fb.group({

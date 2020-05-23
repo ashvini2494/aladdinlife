@@ -15,6 +15,7 @@ export class PlanComponent implements OnInit {
     { prop:'id'},
     { prop: 'Plantype' },
     { name: 'Planlabel' },
+    { name: 'Active' },
     { name: 'Edit'}
    
     
